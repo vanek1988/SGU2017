@@ -34,6 +34,10 @@ public class Photo {
         this.photoPath = photoPath;
     }
 
+    @Override
+    public String toString() {
+        return "Photo - "  + photoPath;
+    }
 
     public void setPhotoDate(Date photoDate) {
         this.photoDate = photoDate;

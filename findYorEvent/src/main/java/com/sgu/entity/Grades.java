@@ -34,6 +34,11 @@ public class Grades {
         this.gradeDate = gradeDate;
     }
 
+    @Override
+    public String toString() {
+        return "Grade - " + grade;
+    }
+
     public void setGrade(int grade) {
         this.grade = grade;
     }

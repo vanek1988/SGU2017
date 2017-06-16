@@ -51,6 +51,11 @@ public class Event {
         this.eventDate = eventDate;
     }
 
+    @Override
+    public String toString() {
+        return "Event -" + eventName + " Description - " + description;
+    }
+
     public void setEventDate(Date eventDate) {
         this.eventDate = eventDate;
     }

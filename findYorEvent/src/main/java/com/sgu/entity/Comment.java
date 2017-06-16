@@ -34,6 +34,11 @@ public class Comment {
         this.commentDate = commentDate;
     }
 
+    @Override
+    public String toString() {
+        return "Comment - " + comment;
+    }
+
     public void setComment(String comment) {
         this.comment = comment;
     }

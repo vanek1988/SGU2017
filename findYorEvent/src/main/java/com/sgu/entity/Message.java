@@ -34,6 +34,11 @@ public class Message {
         this. messageDate = messageDate;
     }
 
+    @Override
+    public String toString() {
+        return "Message - " + message;
+    }
+
     public void setMessage(String message) {
         this.message = message;
     }

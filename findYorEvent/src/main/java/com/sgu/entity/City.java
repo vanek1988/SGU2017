@@ -32,6 +32,11 @@ public class City {
         this.cityName = cityName;
     }
 
+    @Override
+    public String toString() {
+        return "City - " + cityName;
+    }
+
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }

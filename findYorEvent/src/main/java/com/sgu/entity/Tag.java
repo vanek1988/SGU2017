@@ -17,8 +17,20 @@ public class Tag {
     @Column(name="name")
     private String tagName;
 
+    @ManyToMany
+    @JoinTable(name="Tags_events",
+            joinColumns = @JoinColumn(name="tag_id", referencedColumnName="id"),
+            inverseJoinColumns = @JoinColumn(name="event_id", referencedColumnName="id")
+    )
+    private Set<Event> events;
+
     public Tag(String tagName){
         this.tagName = tagName;
+    }
+
+    @Override
+    public String toString() {
+        return "Tag - " + tagName;
     }
 
     public void setTagName(String tagName) {
@@ -29,12 +41,6 @@ public class Tag {
         return tagName;
     }
 
-    @ManyToMany
-    @JoinTable(name="Tags_events",
-            joinColumns = @JoinColumn(name="tag_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name="event_id", referencedColumnName="id")
-    )
-    private Set<Event> events;
 
     public void setEvents(Set<Event> events) {
         this.events = events;
