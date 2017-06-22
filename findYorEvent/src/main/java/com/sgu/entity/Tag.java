@@ -28,6 +28,8 @@ public class Tag {
         this.tagName = tagName;
     }
 
+    public Tag(){};
+
     @Override
     public String toString() {
         return "Tag - " + tagName;

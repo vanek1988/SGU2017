@@ -33,6 +33,7 @@ public class Message {
         this.message = message;
         this. messageDate = messageDate;
     }
+    public Message(){};
 
     @Override
     public String toString() {

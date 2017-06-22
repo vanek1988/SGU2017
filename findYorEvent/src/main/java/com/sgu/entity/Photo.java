@@ -33,6 +33,7 @@ public class Photo {
         this.photoDate = photoDate;
         this.photoPath = photoPath;
     }
+    public Photo(){};
 
     @Override
     public String toString() {

@@ -50,6 +50,7 @@ public class Event {
         this.description = description;
         this.eventDate = eventDate;
     }
+    public Event(){};
 
     @Override
     public String toString() {

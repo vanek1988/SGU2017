@@ -33,6 +33,7 @@ public class Grades {
         this.grade = grade;
         this.gradeDate = gradeDate;
     }
+    public Grades(){};
 
     @Override
     public String toString() {
