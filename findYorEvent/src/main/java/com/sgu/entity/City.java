@@ -8,6 +8,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="Cities")
+@NamedQuery(name = "City.getAll", query = "SELECT c from City c")
 public class City {
 
     @Id
@@ -19,10 +20,10 @@ public class City {
     @JoinColumn(name = "country_id", nullable = false)
     private Country countryCity;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "eventCity")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "eventCity")
     private Set<Event> events;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "userCity")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userCity")
     private Set<User> users;
 
     @Column(name="name")
@@ -32,9 +33,11 @@ public class City {
         this.cityName = cityName;
     }
 
+    public City(){};
+
     @Override
     public String toString() {
-        return "City - " + cityName;
+        return "City - " + cityName +" "+ countryCity.toString();
     }
 
     public void setCityName(String cityName) {

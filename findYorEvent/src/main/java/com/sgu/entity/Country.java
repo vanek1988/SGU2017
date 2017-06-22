@@ -8,6 +8,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="Countries")
+@NamedQuery(name = "Country.getAll", query = "SELECT c from Country c")
 public class Country {
 
     @Id
@@ -18,13 +19,14 @@ public class Country {
     @Column(name="name")
     private String countryName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "commentEvent")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "countryCity")
     private Set<City> countryCity;
 
     public Country(String countryName){
         this.countryName = countryName;
     }
 
+    public Country(){};
     @Override
     public String toString() {
         return "Coutry - " + countryName;

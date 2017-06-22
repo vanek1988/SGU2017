@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CityCountryService {
 
-    public EntityManager entityManager = Persistence.createEntityManagerFactory("Manager").createEntityManager();
+    public EntityManager entityManager = Persistence.createEntityManagerFactory("cityService").createEntityManager();
 
     public Country addCountry(Country country){
         entityManager.getTransaction().begin();
@@ -23,8 +23,9 @@ public class CityCountryService {
 
     }
 
-    public City addCity(City city){
+    public City addCity(City city, Country country){
         entityManager.getTransaction().begin();
+        city.setCountryCity(country);
         City CityDB = entityManager.merge(city);
         entityManager.getTransaction().commit();
         return CityDB;
