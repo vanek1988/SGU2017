@@ -59,7 +59,7 @@ public class User {
         this.birthday = birthday;
     }
     public User(){};
-    
+
     @Override
     public String toString() {
         return "User - Login - " + login + " Name -" + name + " Surname - " + surname;
