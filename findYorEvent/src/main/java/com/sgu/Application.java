@@ -12,6 +12,9 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+
+
+		/*
 		System.out.println("Hello");
 		CityCountryService service = new CityCountryService();
 
@@ -26,7 +29,7 @@ public class Application {
 		for (City c : list){
 			System.out.println(c.toString());
 		}
-
+*/
 
 
 
