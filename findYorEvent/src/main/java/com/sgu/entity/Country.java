@@ -8,7 +8,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="Countries")
-@NamedQuery(name = "Country.getAll", query = "SELECT c from Country c")
+@NamedQuery(name = "Country.getAll", query = "SELECT c FROM Country c")
 public class Country {
 
     @Id
@@ -47,4 +47,6 @@ public class Country {
     public Set<City> getCountryCity() {
         return countryCity;
     }
+
+
 }

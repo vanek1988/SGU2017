@@ -1,9 +1,11 @@
 package com.sgu.services;
 import com.sgu.entity.Country;
 import com.sgu.entity.City;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -15,7 +17,17 @@ public class CityCountryService {
 
     public EntityManager entityManager = Persistence.createEntityManagerFactory("cityService").createEntityManager();
 
+    private static CityCountryService singleton;
+
+    public static CityCountryService getInstance() {
+        if (singleton == null) {
+            singleton = new CityCountryService();
+        }
+        return singleton;
+    }
     public Country addCountry(Country country){
+
+
         entityManager.getTransaction().begin();
         Country countryDB = entityManager.merge(country);
         entityManager.getTransaction().commit();
@@ -40,15 +52,18 @@ public class CityCountryService {
         return entityManager.find(City.class, cityName);
     }
 
-    public void deleteCountry(String countryName){
+    public void deleteCountry(Country country){
+
+
         entityManager.getTransaction().begin();
-        entityManager.remove(getCountry(countryName));
+        entityManager.remove(country);
         entityManager.getTransaction().commit();
+
     }
 
-    public void deleteCity(String cityName){
+    public void deleteCity(City city){
         entityManager.getTransaction().begin();
-        entityManager.remove(getCity(cityName));
+        entityManager.remove(getCity(city.getCityName()));
         entityManager.getTransaction().commit();
     }
 
@@ -66,6 +81,11 @@ public class CityCountryService {
 
     public List<Country> getAllCountyes(){
         TypedQuery<Country> query = entityManager.createNamedQuery("Country.getAll", Country.class);
+        return query.getResultList();
+    }
+    public List<Country> getAllCountyes(String name){
+        TypedQuery<Country> query = entityManager.createQuery("SELECT c FROM Country c WHERE c.countryName LIKE :name",Country.class);
+        query.setParameter("name",  "%" + name + "%" );
         return query.getResultList();
     }
 
