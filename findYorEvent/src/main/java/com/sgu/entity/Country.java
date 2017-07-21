@@ -29,7 +29,7 @@ public class Country {
     public Country(){};
     @Override
     public String toString() {
-        return "Coutry - " + countryName;
+        return countryName;
     }
 
     public void setCountryName(String countryName) {

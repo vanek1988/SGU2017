@@ -62,7 +62,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User - Login - " + login + " Name -" + name + " Surname - " + surname;
+        return "Login - " + login + " Name -" + name + " Surname - " + surname;
     }
 
     public String getLogin() {

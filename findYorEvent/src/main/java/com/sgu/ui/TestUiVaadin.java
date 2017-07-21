@@ -14,7 +14,7 @@ import com.vaadin.ui.*;
 /**
  * Created by admin on 05.07.2017.
  */
-@SpringUI(path = "login")
+@SpringUI
 @Theme("valo")
 @Title("Авторизация")
 @PreserveOnRefresh

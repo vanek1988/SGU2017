@@ -47,15 +47,14 @@ public class CountryForm extends FormLayout {
         delete.setVisible(true);
         setVisible(true);
         countryName.selectAll();
-        System.out.println(country.toString());
+
     }
 
     private void delete() {
 
         service.deleteCountry(country);
         mainUI.updateLists();
-        System.out.println(country.toString());
-            System.out.println("Delete bnt CLICKED");
+
         setVisible(false);
     }
 
@@ -63,8 +62,6 @@ public class CountryForm extends FormLayout {
 
         service.addCountry(country);
         mainUI.updateLists();
-        System.out.println(country.toString());
-        System.out.println("SAVE bnt CLICKED");
         setVisible(false);
     }
 

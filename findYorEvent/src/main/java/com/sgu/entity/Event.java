@@ -1,5 +1,6 @@
 package com.sgu.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Event {
     private City eventCity;
 
     @Column(name="date")
-    private Date eventDate;
+    private LocalDate eventDate;
 
     @Column(name="name")
     private String eventName;
@@ -45,7 +46,7 @@ public class Event {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "gradesEvent")
     private Set<Grades> grades;
 
-    public Event(String eventName, String description, Date eventDate){
+    public Event(String eventName, String description, LocalDate eventDate){
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
@@ -57,7 +58,7 @@ public class Event {
         return "Event -" + eventName + " Description - " + description;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(LocalDate eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -69,7 +70,7 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public Date getEventDate() {
+    public LocalDate getEventDate() {
         return eventDate;
     }
 

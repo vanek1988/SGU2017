@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by admin on 17.06.2017.
@@ -44,13 +45,6 @@ public class CityCountryService {
 
     }
 
-    public Country getCountry(String countryName){
-        return entityManager.find(Country.class, countryName);
-    }
-
-    public City getCity(String cityName){
-        return entityManager.find(City.class, cityName);
-    }
 
     public void deleteCountry(Country country){
 
@@ -63,7 +57,7 @@ public class CityCountryService {
 
     public void deleteCity(City city){
         entityManager.getTransaction().begin();
-        entityManager.remove(getCity(city.getCityName()));
+        entityManager.remove(city);
         entityManager.getTransaction().commit();
     }
 
@@ -92,5 +86,16 @@ public class CityCountryService {
     public List<City> getAllCityes(){
         TypedQuery<City> query = entityManager.createNamedQuery("City.getAll", City.class);
         return query.getResultList();
+    }
+
+    public List<City> getAllCityes(String name){
+        TypedQuery<City> query = entityManager.createQuery("SELECT c FROM City c WHERE c.cityName LIKE :name",City.class);
+        query.setParameter("name",  "%" + name + "%" );
+        return query.getResultList();
+    }
+
+    public Set<City> getListOffAllCityesInCountry(Country country){
+
+        return country.getCountryCity();
     }
 }

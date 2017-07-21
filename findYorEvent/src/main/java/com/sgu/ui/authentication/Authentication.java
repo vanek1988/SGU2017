@@ -1,15 +1,18 @@
 package com.sgu.ui.authentication;
 
+import com.sgu.entity.User;
+import com.sgu.services.UserService;
+
 /**
  * Created by admin on 06.07.2017.
  */
 public class Authentication {
     private String username;
     private String password;
+    private UserService service = UserService.getInstance();
 
     public Authentication() {
-        setUsername("user");
-        setPassword("password");
+
     }
 
     private void setUsername(String username) {
@@ -29,8 +32,14 @@ public class Authentication {
     }
 
     public Boolean authenticate(String username, String password){
-        if(username.equals(getUsername()) && password.equals(getPassword())){
-            return true;
+        if (service.checkAvalibleLogin(username)){
+            User user = service.getUser(username);
+            setUsername(user.getLogin());
+            setPassword(user.getPassword());
+
+            if(username.equals(getUsername()) && password.equals(getPassword())){
+                return true;
+            }
         }
         return false;
     }

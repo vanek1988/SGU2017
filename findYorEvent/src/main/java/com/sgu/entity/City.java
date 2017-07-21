@@ -37,7 +37,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "City - " + cityName +" "+ countryCity.toString();
+        return   cityName;
     }
 
     public void setCityName(String cityName) {
